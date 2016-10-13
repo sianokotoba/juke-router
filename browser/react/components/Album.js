@@ -7,11 +7,10 @@ class Album extends React.Component {
 
   componentDidMount() {
     this.props.fetch(this.props.params.albumId);
-     
+
   }
 
   render() {
-    console.log(selectedAlbum)
     const {selectedAlbum} = this.props;
     return(
       <div className="album">

@@ -29,3 +29,20 @@ export const fetchAndGoToArtist = artist =>
         dispatch(switchLocation('artist'));
       });
   };
+
+export const fetchArtist = aid =>
+  dispatch => {
+    // console.log("Im ArtID", aid)
+    // don't pass in args that have the same name as variables used within your function as it will not pass in the correct objects >>
+    // ex) 'aid' instead of 'artistId'
+    let artistId = `/api/artists/${aid}`,
+        songs = `${artistId}/songs`,
+        albums = `${artistId}/albums`;
+
+    Promise
+      .all([fetch(artistId), fetch(songs), fetch(albums)])
+      .then(responses => Promise.all(responses.map(res => res.json())))
+      .then(results => {
+        dispatch(receiveArtist(...results));
+      });
+  };
