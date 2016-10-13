@@ -2,17 +2,17 @@
 
 import React from 'react';
 import SongsContainer from '../containers/SongsContainer';
-// import { fetchAndGoToAlbum } from '../action-creators/albums';
 
 class Album extends React.Component {
 
   componentDidMount() {
-    fetch(`/api/albums/${this.props.params.albumId}`)
-      .then(res => res.json())
-      .then(album => this.props.go(album))
+    this.props.fetch(this.props.params.albumId);
+     
   }
 
   render() {
+    console.log(selectedAlbum)
+    const {selectedAlbum} = this.props;
     return(
       <div className="album">
         <div>

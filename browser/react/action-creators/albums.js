@@ -21,3 +21,11 @@ export const fetchAndGoToAlbum = album =>
         dispatch(receiveAlbum(album));
         dispatch(switchLocation('album'));
       });
+
+export const fetchAlbum = albumId => 
+  dispatch => 
+    fetch(`/api/albums/${albumId}`)
+      .then(res => res.json())
+      .then(album => {
+        dispatch(receiveAlbum(album));
+});

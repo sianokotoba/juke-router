@@ -1,15 +1,16 @@
 'use strict';
 
 import React from 'react';
+import {Link} from 'react-router';
 
-export default ({ albums, go }) => (
+export default ({ albums }) => (
   <div>
     <h3>Albums</h3>
     <div className="row">
       {
         albums.map(album => (
           <div className="col-xs-4" key={ album.id }>
-            <a className="thumbnail" href="#" onClick={() => go(album)}>
+            <Link className ="thumbnail" to={`/albums/${album.id}`} >
               <img src={ album.imageUrl } />
               <div className="caption">
                 <h5>
@@ -17,10 +18,11 @@ export default ({ albums, go }) => (
                 </h5>
                 <small>{ album.songs.length } songs</small>
               </div>
-            </a>
+            </Link>
           </div>
         ))
       }
     </div>
   </div>
 );
+

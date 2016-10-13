@@ -2,7 +2,8 @@
 
 import { connect } from 'react-redux';
 import Album from '../components/Album';
-import { receiveAlbum } from '../action-creators/albums';
+import { fetchAlbum } from '../action-creators/albums';
+
 
 
 const mapStateToProps = ({ selectedAlbum }) => ({
@@ -10,7 +11,7 @@ const mapStateToProps = ({ selectedAlbum }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  go: album => dispatch(receiveAlbum(album));
+  fetch: albumId => dispatch(fetchAlbum(albumId))
 });
 
 export default connect(
